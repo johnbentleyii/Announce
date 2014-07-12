@@ -1,0 +1,53 @@
+html 
+{
+    	font-family:	"Verdana", Arial, Sans-Serif;
+    	font-size:      1.25em;
+}
+
+body 
+{
+}
+
+.AnnounceDiv 
+{
+    float:          left;
+    height:         100%;
+}
+
+.InnerAnnounceDiv 
+{
+    padding:        10px;
+}
+
+.DoctorP 
+{
+    text-align:     center;
+}
+
+.PatientTA 
+{
+    height:         300px;
+    width:          100%;
+   	font-family:	"Verdana", Arial, Sans-Serif;
+   	font-size:      1em;
+}
+
+.NoteTA 
+{
+    margin-top:     10px;
+    height:         150px;
+    width:          100%;
+   	font-family:	"Verdana", Arial, Sans-Serif;
+   	font-size:      1em;
+}
+
+#DoctorListDiv 
+{
+    margin-left:    50px;
+}
+
+p,a {
+
+
+}
+

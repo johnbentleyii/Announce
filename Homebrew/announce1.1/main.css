@@ -1,0 +1,137 @@
+html 
+{
+    	font-family:	"Verdana", Arial, Sans-Serif;
+    	font-size:      1.25em;
+}
+
+body 
+{
+        margin:         10px;
+}
+
+.AnnounceDiv 
+{
+    float:          left;
+    height:         100%;
+}
+
+.InnerAnnounceDiv 
+{
+    padding:        10px;
+}
+
+.DoctorP 
+{
+    text-align:     center;
+}
+
+.PatientTA 
+{
+    height:         300px;
+    width:          100%;
+   	font-family:	"Verdana", Arial, Sans-Serif;
+   	font-size:      1em;
+}
+
+.NoteTA 
+{
+    margin-top:     10px;
+    height:         150px;
+    width:          100%;
+   	font-family:	"Verdana", Arial, Sans-Serif;
+   	font-size:      1em;
+}
+
+#DoctorListDiv 
+{
+    margin-left:    50px;
+}
+
+p,a {
+
+
+}
+
+input, select 
+{
+    font-size:      1em;
+}
+
+
+.UpdateBtn, .DeleteBtn, .FilterBtn
+{
+    font-size:     1em;
+    margin-left:   5px;
+    margin-right:  5px;
+}
+
+.UpdateBtn 
+{
+    margin-left:  15px;
+}
+
+.CanEdit 
+{
+    margin-left:    10px;
+}
+
+#CloseBtn 
+{
+    font-size:      1em;
+}
+
+.UserRowOdd 
+{
+    background-color:     #dddddd;
+}
+
+.UserData 
+{
+    border-width:       0px;
+    padding-right:      10px;
+}
+
+#UserTbl 
+{
+    margin-top:     -5px;
+    margin-bottom:  10px;
+}
+
+#PractitionerSelectDiv, #PractitonerControlsDiv 
+{
+    float:          left;
+   margin-left:    10px;
+       width:          150px;
+}
+
+#NewPractitonerFld, #PractitionerSelect 
+{
+    font-size:      1em;
+}
+
+#PractitonerControlsDiv 
+{
+ 
+
+    clear:          right;
+}
+
+#AddBtn, #DeleteBtn, #MoveUpBtn, #MoveDownBtn, #SaveOrderBtn, #EditUsersBtn, #EditListBtn
+{
+    font-size:     1em;
+    margin:   5px;
+
+}
+
+#DeleteBtn 
+{
+    margin-top:     50px;
+}
+
+#ToolsDiv 
+{
+    clear:      both;
+    float:      left;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
