@@ -27,10 +27,10 @@
 		// Callback for choosing individual doctors
 		function selectSome() {
 		
-			disableCheckboxes( allSeleced = false );
+			toggleDoctorCheckboxes( allSeleced = false );
 		}
 		
-		// Updates the filter list based on what is selected
+		// Updates the filter lis	t based on what is selected
 		function saveFilter () {
 		
 			var filters = [];
@@ -75,6 +75,7 @@
 		function initView( ) {
 			
 			var checkboxes = $( "input[name=\'DoctorList\']" );
+			var allSelected = true;
 			
 			// One false makes allSelected false. Ain\'t logic grand?
 			checkboxes.each( function() {
@@ -82,7 +83,7 @@
 				}
 			);
 			
-			disableCheckboxes( allSelected );
+			toggleDoctorCheckboxes( allSelected );
 			
 			$( "#ShowAllRB" ).attr( "checked", allSelected );	
 			$( "#SelectRB" ).attr( "checked", !allSelected );
