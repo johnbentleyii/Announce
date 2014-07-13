@@ -1,10 +1,12 @@
 <?php
-	// Finalizes the initial view
+
 	$this->Html->ScriptBlock( '
 	
 		var allSelected = false;
 		
-		function disableCheckboxes( disable ) {
+		// Disables or enables the doctor checkboxes
+		//	disable - true if checkbox should be disabled
+		function toggleDoctorCheckboxes( disable ) {
 		
 			var checkboxes = $( "input[name=\'DoctorList\']" );
 			
@@ -16,16 +18,19 @@
 			$( "#doctorListDiv" ).prop( "disabled", disable );					
 		}
 		
+		// Callback for selecting all doctors
 		function selectAll() {
 		
-			disableCheckboxes( allSelected = true );
+			toggleDoctorCheckboxes( allSelected = true );
 		}
 		
+		// Callback for choosing individual doctors
 		function selectSome() {
 		
 			disableCheckboxes( allSeleced = false );
 		}
 		
+		// Updates the filter list based on what is selected
 		function saveFilter () {
 		
 			var filters = [];
@@ -35,7 +40,9 @@
 			var checkboxes = $( "input[name=\'DoctorList\']" );
 			
 			checkboxes.each( function() {
-					if( $( this ).is( ":checked" ) || allSelected ) {
+			
+			// Add the doctor to the filter if it is check or all is selected
+			if( $( this ).is( ":checked" ) || allSelected ) {
 						item = {};
 						item[ "user_id" ] = current_user_id;
 						item[ "doctor_id" ] = $( this ).attr( "doctor_id" );
@@ -44,19 +51,23 @@
 				}
 			);
 			
+			// JSON message has Array of user_ids and doctor_ids			
 			jQuery.post( "/Filters/update_filters",
 						JSON.stringify( filters ),
 						function ( response ) {
 							if( response.error ) {
 								alert( response.error );
 								console.log( response.error );
-							} else
-								window.open( "/Doctors/", "_self" );	
+							}
+							else
+								window.close();
 						}
 					);
 				
 		}
 		
+		// Finalize the view by setting the radio buttons based on
+		// how the checkboxes are set in the HTML.
 		function initView( ) {
 			
 			var checkboxes = $( "input[name=\'DoctorList\']" );
@@ -80,7 +91,15 @@
 
 ?>
 
+<?php
+	echo $this->Html->tag( 'h1', 
+						'Editing Filter for ' . $this->Session->read( 'Edit.username' )
+			);
+?>
+
 <div id="FilterDiv">
+
+	<!-- Radio Buttons are used to toggle between all or a specific set of doctors -->
 	<p><input id="ShowAllRB" type="radio" name="Filter" value="showall" onclick="selectAll();" />Show All Doctors</p>
 	<p><input id="SelectRB" type="radio" name="Filter" value="select" onclick="selectSome();" />Show Doctors Selected Below:</p>
 	<div id="DoctorListDiv" style="display: block">
@@ -88,12 +107,13 @@
 
 	
 	foreach( $all_doctors as $doctor ) {
-		$doctorPrefix = str_replace( '.', '', str_replace( ' ', '', 	
-												$doctor['Doctor']['doctorName'] ) );
+		$doctorPrefix = $this->Html->make_css_friendly( $doctor['Doctor']['doctorName'] );
 		echo '<p id="' . $doctorPrefix . 'P" class="DoctorList">';
-		
+
+		// A Doctor is selected if it is in the visible list.
 		$shown = in_array( $doctor['Doctor']['id'], $visible_doctor_ids, true );
 		
+		// Create a checkbox for each doctor
 		echo $this->Html->tag( 'input', '', Array (
 					'id' => $doctorPrefix . 'CB',
 					'doctor_id' => $doctor['Doctor']['id'],

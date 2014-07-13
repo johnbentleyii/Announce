@@ -47,6 +47,10 @@ body
     margin-left:    50px;
 }
 
+h1 {
+	font-size:		1.25em;
+}
+
 p,a {
 
 
@@ -97,19 +101,19 @@ input, select
     margin-bottom:  10px;
 }
 
-#PractitionerSelectDiv, #PractitonerControlsDiv 
+#DoctorSelectDiv, #DoctorControlsDiv 
 {
-    float:          left;
+   float:          left;
    margin-left:    10px;
-       width:          150px;
+   width:          150px;
 }
 
-#NewPractitonerFld, #PractitionerSelect 
+#NewDoctorFld, #DoctorSelect 
 {
     font-size:      1em;
 }
 
-#PractitonerControlsDiv 
+#DoctorControlsDiv 
 {
  
 

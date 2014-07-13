@@ -6,4 +6,10 @@ class Doctor extends AppModel {
 						'className' => 'Filter'
 		)
 	);
+	
+	public $order = "Doctor.sortOrder ASC";
+	
+	public function afterDelete( ) {
+		$this->Filter->deleteAll( Array( 'Filter.doctor_id' => $this->id ), false );
+	}
 }

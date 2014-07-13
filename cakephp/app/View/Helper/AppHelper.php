@@ -30,4 +30,10 @@ App::uses('Helper', 'View');
  * @package       app.View.Helper
  */
 class AppHelper extends Helper {
+
+	// Strips periods and spaces to make the string compliant with
+	// 		css naming conventions.
+	public function make_css_friendly( $input_string ) {
+		return ( str_replace( '.', '', str_replace( ' ', '', $input_string ) ) );
+	}
 }

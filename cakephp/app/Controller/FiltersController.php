@@ -1,10 +1,11 @@
 <?php
 
 class FiltersController extends AppController {
-	public $helpers = array( 'html', 'form' );
+	public $helpers = array( 'Html', 'Form' );
 	public $components = array ( 'Session' );
 
-	
+	// Update the filters for the user being edited.
+	// JSON message should be an array of 'user_id' and 'doctor_id' pairs
 	public function update_filters() {
 	
 		$success = true;

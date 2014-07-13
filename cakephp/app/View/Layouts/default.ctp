@@ -38,7 +38,8 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 </head>
 <body>
 
-<?php echo $this->fetch('content'); ?>
+	<?php echo $this->Session->flash(); ?>
+	<?php echo $this->fetch('content'); ?>
 
 </body>
 </html>
