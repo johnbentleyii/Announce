@@ -51,9 +51,13 @@
 				}
 			);
 			
+			var jsonRequest = new Object();
+			jsonRequest.user_id = current_user_id;
+			jsonRequest.filters = filters;
+			
 			// JSON message has Array of user_ids and doctor_ids			
 			jQuery.post( "/Filters/update_filters",
-						JSON.stringify( filters ),
+						JSON.stringify( jsonRequest ),
 						function ( response ) {
 							if( response.error ) {
 								alert( response.error );

@@ -94,7 +94,7 @@ class UsersController extends AppController {
 		$update = NULL;
 		
 		$this->autoRender = false;
-		//$this->request->onlyAllow( 'ajax' );
+		$this->request->onlyAllow( 'ajax' );
 		$this->response->type( 'json' );
 		
 		if( $this->request->is( 'post' ) ) {

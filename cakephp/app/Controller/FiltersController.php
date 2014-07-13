@@ -12,7 +12,6 @@ class FiltersController extends AppController {
 		$error = NULL;
 		$data = NULL;
 		$update = NULL;
-		$current_user_id = $this->Session->read( 'Edit.user_id' );
 		$newFilters = array ();
 		
 		$this->autoRender = false;
@@ -21,12 +20,12 @@ class FiltersController extends AppController {
 		
 		if( $this->request->is( 'post' ) ) {
 			
+			$data = $this->request->input( 'json_decode', true );
 			//Clear out the old
-			$this->Filter->deleteAll( array( 'user_id' => $current_user_id ) );
+			$this->Filter->deleteAll( array( 'user_id' => $data['user_id'] ) );
 			
 			//Build the new
-			$data = $this->request->input( 'json_decode', true );
-			foreach ( $data as $value_array ) {
+			foreach ( $data['filters'] as $value_array ) {
 				$this->Filter->create();
 				$this->Filter->save( Array( 'Filter'=> $value_array ) );
 			}
