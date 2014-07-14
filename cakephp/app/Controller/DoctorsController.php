@@ -59,7 +59,7 @@ class DoctorsController extends AppController {
 		
 		$return_message = array (
 			'success' => true,
-			'content' => $this->filter_doctors()
+			'content' => $this->filter_doctors( $this->Session->read( 'User.id' ) )
 		);
 		return json_encode( $return_message );
 	}

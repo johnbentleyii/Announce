@@ -20,10 +20,10 @@
 					else
 						jsonRequest.noteList = value;
 					
-					jQuery.post( "/Doctors/update_list",
-							JSON.stringify( jsonRequest ),
+					jQuery.post( "/Doctors/update_doctors",
+							JSON.stringify( Array( jsonRequest ) ),
 							function ( response ) {
-								if( response.error ) {
+								if( !response.success ) {
 									alert( "Error - " + response.error );
 									console.log( "Error - " + response.error );
 								}
@@ -65,7 +65,7 @@
  		$this->Html->ScriptBlock( '
 			function refreshLists( response ) {
 			
-				if( response.error ) {
+				if( !response.success ) {
 					alert( "Error - " + response.error );
 					console.log( "Error - " + response.error );
 				} else

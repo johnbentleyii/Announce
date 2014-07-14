@@ -1,7 +1,7 @@
 <?php
 	$this->Html->ScriptBlock( '
 
-
+	// Only allow alpha characters, numbers and space
 	function addDoctorKeyPress() {
 
 		return( event.returnValue = (((event.keyCode >= 48) && (event.keyCode <= 57)) ||
@@ -11,6 +11,7 @@
 		);	
 	}
 
+	// Remove leading and trailing blanks
 	function trimBlanks(str) {
 
 		var begin = 0, end = str.length - 1;
@@ -26,6 +27,7 @@
 		return (str.substr(begin, end - begin + 1));
 	}
 
+	// Add a new doctor for the list
 	function addDoctor() {
 
 		var doctor = trimBlanks( document.getElementById("NewDoctorFld").value );
@@ -50,16 +52,18 @@
 		);
 	}
 
+	// Set button availability base on selection.
 	function doctorSelected() {
 
 		var selectedIndex = $( "#DoctorSelect" ).prop( "selectedIndex" );
 
 		$( "#MoveUpBtn" ).prop( "disabled", ( ( selectedIndex == null ) || ( selectedIndex == 0 ) ) );
-		$( "#MoveDownBtn").prop( "disabled", ( ( selectedIndex == null ) || ( selectedIndex == ($( "#DoctorSelect" ).children().length - 1) ) ) );    
+		$( "#MoveDownBtn" ).prop( "disabled", ( ( selectedIndex == null ) || ( selectedIndex == ($( "#DoctorSelect" ).children().length - 1) ) ) );
+		$( "#DeleteBtn" ).prop( "disabled", ( selectedIndex == null ) );
 	}
 
 	
-
+	// Move the selected doctor up one space
 	function moveUp() {
 
 		var doctorSelect = $( "#DoctorSelect");
@@ -70,7 +74,6 @@
 		selected = $( "[value=\'" + doctorSelect.val() + "\']" );
 		priorSelected = selected.prev();
 	
-		//selected.remove();
 		selected.insertBefore( priorSelected ); 
 		
 		doctorSelect.selectedIndex = selectedIndex - 1;
@@ -79,6 +82,7 @@
 		doctorSelect.show();
 	}
 
+	// Move the selected doctor one space
 	function moveDown() {
 
 		var doctorSelect = $( "#DoctorSelect");
@@ -89,7 +93,6 @@
 		selected = $( "[value=\'" + doctorSelect.val() + "\']" );
 		afterSelected = selected.next();
 	
-		//selected.remove();
 		afterSelected.insertBefore( selected ); 
 		
 		doctorSelect.selectedIndex = selectedIndex + 1;
@@ -98,6 +101,7 @@
 		doctorSelect.show();
 	}
 
+	// Save the order of doctors
 	function saveOrder() {
 		
 		var doctors = [];
@@ -126,6 +130,7 @@
 			
 	}
 
+	// Delete the selected doctor
 	function deleteDoctor() {
 
 		selected = $( "[value=\'" + ( $( "#DoctorSelect" ).val() ) + "\']" );
@@ -190,7 +195,7 @@
 			<input id="MoveUpBtn" type="button" disabled="true" value="Move Up" onclick="moveUp();"/>
 			<input id="MoveDownBtn" type="button" disabled="true" value="Move Down" onclick="moveDown();"/>
 			<input id="SaveOrderBtn" type="button" value="Save Order" onclick="saveOrder();"/>
-			<input id="DeleteBtn" type="button" value="Delete" onclick="deleteDoctor();"/>
+			<input id="DeleteBtn" type="button" disabled="true" value="Delete" onclick="deleteDoctor();"/>
 		</div>
    </div>
 </div>
